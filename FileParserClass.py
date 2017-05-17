@@ -78,10 +78,14 @@ class FileParser:
             '''
             for column in dirty_column:
                 tmp_list = column.strip().split(' ')
-                column_name = re.match(r'`(.*?)`', tmp_list[0])
+                clean_list = []
+                for ele in tmp_list:
+                    if '' != ele and not ele in clean_list:
+                        clean_list.append(ele)
+                column_name = re.match(r'`(.*?)`', clean_list[0])
                 if column_name != None:
                     column_name = column_name.group(1)
-                    column_type = tmp_list[1]
+                    column_type = clean_list[1]
                     # TODO:此处无法正确匹配,使用取列表最后一项,可能会有bug
                     column_comment = re.match(r'.*?COMMENT \'(.*?)\'.*?', column.strip())
                     if column_comment is not None:
@@ -90,8 +94,8 @@ class FileParser:
                         column_comment = ''
 
 
-                    # if '\'' in tmp_list[-1]:
-                    #     column_comment = tmp_list[-1][1:-2]
+                    # if '\'' in clean_list[-1]:
+                    #     column_comment = clean_list[-1][1:-2]
                     # else:
                     #     column_comment = ''
                     column_tmp.append([column_name, column_type, column_comment])
