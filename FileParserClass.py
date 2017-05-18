@@ -82,6 +82,8 @@ class FileParser:
                 for ele in tmp_list:
                     if '' != ele and not ele in clean_list:
                         clean_list.append(ele)
+                if 0 == len(clean_list):
+                    continue
                 column_name = re.match(r'`(.*?)`', clean_list[0])
                 if column_name != None:
                     column_name = column_name.group(1)
