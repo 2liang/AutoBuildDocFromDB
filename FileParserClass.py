@@ -1,16 +1,17 @@
 # -*- coding:utf-8 -*-
 import re
+
+
 class FileParser:
 
     def __init__(self):
         pass
 
-
     # 定义分离SQL文件匹配模式
     # table_pattern = r'CREATE TABLE([\s\S]*?)LOCK TABLES'    #分离表
     table_pattern = r'CREATE TABLE([\s\S]*?);'
-    name_pattern = r'.*?`(.*?)`.*?' # 获取表名称或字段名称
-    table_content_pattern = r'COMMENT=\'(.*?)\''   #获取表详情
+    name_pattern = r'.*?`(.*?)`.*?'  # 获取表名称或字段名称
+    table_content_pattern = r'COMMENT=\'(.*?)\''  # 获取表详情
 
     def separatTable(self, content):
         '''将SQL文件中各个表分离开来
@@ -88,7 +89,6 @@ class FileParser:
                         column_comment = column_comment.group(1)
                     else:
                         column_comment = ''
-
 
                     # if '\'' in tmp_list[-1]:
                     #     column_comment = tmp_list[-1][1:-2]
