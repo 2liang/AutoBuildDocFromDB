@@ -7,10 +7,8 @@
 
 2. 从数据库中导出sql文件,请尽量导出只有表结构无表数据的sql文件
 
-3. 在项目目录下运行:
-`python build.py sql_dir`
+3. 在项目目录下运行，多个sql文件空格分隔:
+`python build.py sql_dir.sql sql_dir_1.sql sql_dir_2.sql`
 其中sql_dir为您的sql文件路径
 
 4. 生成成功的md文件,在项目的md文件夹中,文件名同您的sql文件名
-
-[示例](http://blog.2liang.me/2016/03/06/%E4%BD%BF%E7%94%A8SQL%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E6%A1%A3/)
